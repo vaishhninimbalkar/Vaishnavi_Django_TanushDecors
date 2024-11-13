@@ -1,0 +1,150 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{% block title %}Home{% endblock title %}</title>
+    {% block head_favicon %}
+    <link rel="icon" type="image/png" href="{% static 'img/favicon.ico' %}" />
+    {% endblock head_favicon %}
+    {% block head_meta %}
+    {% block head_meta_charset %}
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    {% endblock head_meta_charset %}
+    {% block head_meta_contentlanguage %}
+    <meta http-equiv="Content-Language" value="en-US" />
+    {% endblock head_meta_contentlanguage %}
+    {% block head_meta_viewport %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0. shrink-to-fit=no" />
+    {% endblock head_meta_viewport %}
+    {% endblock head_meta %}
+    {% block head_css %}
+    {% block head_css_site %}
+    <link href="{% static 'vendor/bootstrap/4.4.1/css/bootstrap.min.css' %}" rel="stylesheet" media="screen" />
+    <link href="{% static 'app/css/app.css' %}" rel="stylesheet" media="screen" />
+
+    {% endblock head_css_site %}
+    {% block head_css_section %}
+    {% endblock head_css_section %}
+    {% block head_css_page %}
+    {% endblock head_css_page %}
+    {% endblock head_css %}
+</head>
+
+<body>
+    <nav class="custom-navbar navbar navbar-expand-md navbar-dark bg-dark"
+      aria-label="Furni navigation bar">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <img class="new-lg" src="{% static 'images/logo.png' %}" alt="TANUSH DECORS" />
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarsFurni"
+          aria-controls="navbarsFurni"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsFurni">
+          <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
+            <li class="nav-item active">
+              <a
+                class="nav-link"
+                style="color: black !important"
+                href="index.html"
+                >Home</a
+              >
+            </li>
+            <li>
+              <a
+                class="nav-link"
+                style="color: black !important; font-weight: 900"
+                href="shop.html"
+                >Shop</a
+              >
+            </li>
+            <li>
+              <a
+                class="nav-link"
+                style="color: black !important; font-weight: 900"
+                href="about.html"
+                >About us</a
+              >
+            </li>
+            <li>
+              <a
+                class="nav-link"
+                style="color: black !important; font-weight: 900"
+                href="services.html"
+                >Services</a
+              >
+            </li>
+            <li>
+              <a
+                class="nav-link"
+                style="color: black !important; font-weight: 900"
+                href="blog.html"
+                >Blog</a
+              >
+            </li>
+            <li>
+              <a
+                class="nav-link"
+                style="color: black !important; font-weight: 900"
+                href="contact.html"
+                >Contact us</a
+              >
+            </li>
+          </ul>
+
+          <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
+            <li>
+              <a class="nav-link" href="#"><img src="images/user.svg" /></a>
+            </li>
+            <li>
+              <a class="nav-link" href="cart.html"><img src="{% static 'images/cart.svg' %}"
+              /></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main role="main">
+        <div id="site-wrapper">
+            {% block content %}MISSING CONTENT{% endblock content %}
+        </div>
+    </main>
+
+    <footer class="container fixed-bottom bg-dark text-white">
+        <p>&copy; Polls-App 2019</p>
+    </footer>
+</body>
+
+{# Set of blocks that can be used to display JavaScript files #}
+{% block footer_javascript %} {% block footer_javascript_site %}
+
+<script src="{% static 'vendor/popper/1.14.3/popper.min.js' %}"></script>
+<script src="{% static 'vendor/jquery/3.4.1/js/jquery.min.js' %}"></script>
+<script src="{% static 'vendor/jquery/3.4.1/js/jquery.slim.min.js' %}"></script>
+<script src="{% static 'vendor/bootstrap/4.4.1/js/bootstrap.bundle.min.js' %}"></script>
+
+
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/tiny-slider.js"></script>
+<script src="js/custom.js"></script>
+
+<script src="{% static 'app/js/app.js' %}"></script>
+
+{% endblock footer_javascript_site %} {% block footer_javascript_section %}
+{% endblock footer_javascript_section %} {% block footer_javascript_page %}
+{% endblock footer_javascript_page %} {% endblock footer_javascript %}
+
+</html>

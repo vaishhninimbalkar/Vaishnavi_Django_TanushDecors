@@ -1,39 +1,5 @@
 {
     "files.exclude": {
-        "**/.git": false,
-        "**/.svn": false,
-        "**/.hg": false,
-        "**/CVS": false,
-        "**/.DS_Store": false,
-        "**/Thumbs.db": false,
-        ".viminfo": false,
-        ".vscode-insiders": false,
-        ".local": false,
-        "**/.local": false,
-        ".cache": false,
-        "**/.cache": false,
-        ".editorconfig": false,
-        "**/.editorconfig": false,
-        ".envrc": false,
-        "**/.envrc": false,
-        ".gitattributes": false,
-        "**/.gitattributes": false,
-        ".gitignore": false,
-        "**/.gitignore": false,
-        ".venv": false,
-        "**/.venv": false,
-        "**/.vscode-insiders": false,
-        "**/composer.lock": false,
-        "**/package-lock.json": false,
-        "**/pnpm-lock.yaml": false,
-        "set_env.sh": false,
-        "**/set_env.sh": false,
-        "**/Library": false,
-        "Library": false,
-        "**/node_modules": false,
-        "node_modules": false
-    },
-    "explorerExclude.backup": {
         "**/.git": true,
         "**/.svn": true,
         "**/.hg": true,
@@ -65,6 +31,14 @@
         "**/Library": true,
         "Library": true,
         "**/node_modules": true,
-        "node_modules": true
-    }
+        "node_modules": true,
+        "uv.lock": true,
+        "**/.config": true,
+        ".config": true,
+        "**/.github": true,
+        ".github": true,
+        "**/.vscode": true,
+        ".vscode": true
+    },
+    "explorerExclude.backup": {}
 }

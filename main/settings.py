@@ -30,11 +30,12 @@ LOGGING = {
 }
 
 # Static files (CSS, JavaScript, Images): https://docs.djangoproject.com/en/2.2/howto/static-files/
-STATIC_URL = '/polls/static/'
+STATIC_URL = 'static/'
 
 # Application definition
 INSTALLED_APPS = [
     'polls.apps.PollsConfig',
+    'tanushdecors.apps.TanushDecorsConfig',
 
     'django.contrib.admin',
     'django.contrib.auth',

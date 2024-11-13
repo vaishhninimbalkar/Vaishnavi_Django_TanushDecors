@@ -1,0 +1,36 @@
+{% extends 'polls/base.html' %}
+{% block title %}Django Tutorial
+{% endblock title %}
+{% block nav-style %}mkt-nav{% endblock nav-style %}
+{% block content %}
+
+<div class="jumbotron">
+    <div class="container">
+        <h1 class="display-3">Django Help</h1>
+        </p>
+    </div>
+</div>
+
+<div class="container">
+    {% if latest_question_list %}
+    <div class="cmb-4 text-center">
+        {% for question in latest_question_list %}
+        <div class="mb-4 shadow-sm">
+            <div class="text-left">
+                <h5 class="itle">{{ question.question_text }}</h5>
+                {% for choice in question.choice_set.all %}
+                <div class="row">
+                    <div class="col-sm">{{ choice.choice_text }}</div>
+                    <div class="col-sm">{{ choice.votes }} vote{{ choice.votes|pluralize }}</div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p>No polls are available.</p>
+    {% endif %}
+</div>
+
+{% endblock content %}

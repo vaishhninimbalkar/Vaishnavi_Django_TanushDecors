@@ -1,11 +1,15 @@
 from django.contrib import admin
 from django.urls import include, path
 
-from tanushdecors import views
+from polls import views as p_views
+from tanushdecors import views as t_views
 
 urlpatterns = [
-    path('',        views.redirect_to_home, name='home'),
+    path('',        p_views.redirect_to_home, name='home'),
     path('polls/',  include('polls.urls')),
-    path('admin/',  admin.site.urls)
+    
+    path('tanushdecors/',  include('tanushdecors.urls')),
+
+    path('admin/',  admin.site.urls),
 ]
 
