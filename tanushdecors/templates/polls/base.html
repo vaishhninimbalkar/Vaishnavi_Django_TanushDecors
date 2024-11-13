@@ -1,0 +1,111 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{% block title %}Home{% endblock title %}</title>
+    {% block head_favicon %}
+    <link rel="icon" type="image/png" href="{% static 'img/favicon.ico' %}" />
+    {% endblock head_favicon %}
+    {% block head_meta %}
+    {% block head_meta_charset %}
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    {% endblock head_meta_charset %}
+    {% block head_meta_contentlanguage %}
+    <meta http-equiv="Content-Language" value="en-US" />
+    {% endblock head_meta_contentlanguage %}
+    {% block head_meta_viewport %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0. shrink-to-fit=no" />
+    {% endblock head_meta_viewport %}
+    {% endblock head_meta %}
+    {% block head_css %}
+    {% block head_css_site %}
+    <link href="{% static 'vendor/bootstrap/4.4.1/css/bootstrap.min.css' %}" rel="stylesheet" media="screen" />
+    <link href="{% static 'app/css/app.css' %}" rel="stylesheet" media="screen" />
+
+    {% endblock head_css_site %}
+    {% block head_css_section %}
+    {% endblock head_css_section %}
+    {% block head_css_page %}
+    {% endblock head_css_page %}
+    {% endblock head_css %}
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="#">Poll-App</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+            aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/polls">App<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/polls">Polls</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/polls/results">Results</a>
+                </li>
+                <!--
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#">Disabled</a>
+                    </li>
+                    -->
+                <!--
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown01">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </li>
+                    -->
+            </ul>
+            &nbsp;
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/polls/help">Help</a>
+                </li>
+            </ul>
+
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+                <a class="nav-link" href="/admin">Admin</a>
+            </button>
+        </div>
+    </nav>
+
+    <main role="main">
+        <div id="site-wrapper">
+            {% block content %}MISSING CONTENT{% endblock content %}
+        </div>
+    </main>
+
+    <footer class="container fixed-bottom bg-dark text-white">
+        <p>&copy; Polls-App 2019</p>
+    </footer>
+</body>
+
+{# Set of blocks that can be used to display JavaScript files #}
+{% block footer_javascript %} {% block footer_javascript_site %}
+
+<script src="{% static 'vendor/popper/1.14.3/popper.min.js' %}"></script>
+<script src="{% static 'vendor/jquery/3.4.1/js/jquery.min.js' %}"></script>
+<script src="{% static 'vendor/jquery/3.4.1/js/jquery.slim.min.js' %}"></script>
+<script src="{% static 'vendor/bootstrap/4.4.1/js/bootstrap.bundle.min.js' %}"></script>
+
+<script src="{% static 'app/js/app.js' %}"></script>
+
+{% endblock footer_javascript_site %} {% block footer_javascript_section %}
+{% endblock footer_javascript_section %} {% block footer_javascript_page %}
+{% endblock footer_javascript_page %} {% endblock footer_javascript %}
+
+</html>

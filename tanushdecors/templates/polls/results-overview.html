@@ -1,0 +1,39 @@
+{% extends 'polls/base.html' %}
+{% block title %}Results{% endblock title %}
+{% block nav-style %}mkt-nav{% endblock nav-style %}
+{% block content %}
+
+<div class="jumbotron">
+    <div class="container">
+        <div class="display-3">Results of the current Poll</div>
+        <p>
+            <a class="btn btn-primary btn-lg" href="/polls" role="button">Back to Polls &raquo;</a>
+        </p>
+    </div>
+</div>
+
+
+{% if not latest_question_list %}
+    <p>No polls are available.</p>
+{% else %}
+    {% for question in latest_question_list %}
+    <div class="container w-screen">
+        <div class="row header">
+            <div class="col-sm text-left"><h5 class="title">{{ question.question_text }}</h5></div>
+            {% for choice in question.choice_set.all %}
+            <div class="col-sm text-center"><h5 class="title">{{ choice.choice_text }}</h5></div>
+            {% endfor %}
+        </div>
+        <div class="row">
+            <div class="col-sm text-left">&nbsp;</h5></div>
+
+            {% for choice in question.choice_set.all %}
+            <div class="col-sm text-center">{{ choice.votes }}</div>
+            {% endfor %}
+        </div>
+        <br >
+    </div>
+    {% endfor %}
+{% endif %}
+
+{% endblock content %}

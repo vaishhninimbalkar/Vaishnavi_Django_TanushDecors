@@ -1,0 +1,46 @@
+{% extends 'polls/base.html' %}
+
+{% load static %}
+
+{% block title %}Polls{% endblock title %}
+{% block nav-style %}mkt-nav{% endblock nav-style %}
+{% block content %}
+
+<div class="jumbotron">
+    <div class="container">
+        <div class="display-3">List of current Polls</h1>
+            <p>
+                <a class="btn btn-primary btn-lg" href="results" role="button">Results &raquo;</a>
+            </p>
+        </div>
+    </div>
+
+    <div class="container full">
+        {% if latest_question_list %}
+        <div class="card-deck mb-4 text-center">
+            {% for question in latest_question_list %}
+            <div class="card mb-4 shadow-sm">
+                <img class="card-img-top" src="{% static 'img/placeholder/100x50.png' %}" alt="Card image cap" />
+                <div class="card-body text-left">
+                    <h5 class="card-title">{{ question.question_text }}</h5>
+                    {% for choice in question.choice_set.all %}
+                    <div class="row">
+                        <div class="col-sm">{{ choice.choice_text }}</div>
+                        <div class="col-sm text-right">{{ choice.votes }} vote{{ choice.votes|pluralize }}</div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="card-footer">
+                    <button type="button" class="btn btn-lg btn-block btn-outline-primary">
+                        <a href="{% url 'polls:detail' question.id %}">Vote</a>
+                    </button>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p>No polls are available.</p>
+        {% endif %}
+    </div>
+
+    {% endblock content %}
