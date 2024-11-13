@@ -121,6 +121,8 @@ a.more {
 
 .hero {
   background: #3b5d50;
+  background: url('images/background.png') no-repeat center center/cover; height: 100vh; position: relative;
+
   /* padding: calc(4rem - 30px) 0 0rem 0;  */
 }
 @media (min-width: 768px) {
@@ -417,7 +419,7 @@ a.more {
 .we-help-section .imgs-grid {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (1fr) [27];
+
   grid-template-columns: repeat(27, 1fr);
   position: relative;
 }
