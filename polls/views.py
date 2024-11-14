@@ -52,19 +52,12 @@ class ResultsView(generic.DetailView):
     template_name = 'polls/results.html'
 
 class ResultsOverviewView(generic.ListView):
-    """
-    ResultsOverviewViewgeneric:
-    """
     template_name = 'polls/results-overview.html'
     context_object_name = 'latest_question_list'
 
     LOGGER.debug('ResultsOverviewView |')
 
     def get_queryset(self):
-        """
-        Return the last five published questions (not including those set to be
-        published in the future).
-        """
         return Question.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')
 
 
