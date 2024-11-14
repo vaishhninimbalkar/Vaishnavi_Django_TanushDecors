@@ -521,6 +521,26 @@
     </div>
     <!-- End Blog Section -->
 
+
+    <div class="container">
+      <h2>Your Cart</h2>
+      <table class="table">
+          <thead>
+              <tr>
+                  <th class="product-thumbnail">Image</th>
+                  <th class="product-name">Product</th>
+                  <th class="product-price">Price</th>
+                  <th class="product-quantity">Quantity</th>
+                  <th class="product-total">Total</th>
+                  <th class="product-remove">Remove</th>
+                  <th class="product-buy">Buy Now</th>
+              </tr>
+          </thead>
+          <tbody id="cart-items">
+          </tbody>
+      </table>
+  </div>
+
     <!-- Start Footer Section -->
     <footer class="footer-section">
       <div class="container relative">
@@ -636,13 +656,7 @@
           <div class="row pt-4">
             <div class="col-lg-6">
               <p class="mb-2 text-center text-lg-start">
-                Copyright &copy;
-                <script>
-                  document.write(new Date().getFullYear());
-                </script>
-                . All Rights Reserved. &mdash; Designed with love by
-                <a href="https://untree.co">Untree.co</a>
-                <!-- License information: https://untree.co/license/ -->
+                Copyright &copy; 2025
               </p>
             </div>
 
@@ -659,12 +673,10 @@
     <!-- End Footer Section -->
 
     <script>
-      // Function to render the cart items from localStorage
       function renderCart() {
         const cartItemsContainer = document.getElementById("cart-items");
         cartItemsContainer.innerHTML = ""; // Clear the current cart display
 
-        // Get cart from localStorage or set it to an empty array
         const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
         cart.forEach((item) => {
