@@ -2,13 +2,12 @@
 
 import logging
 
-from django.http import HttpResponseRedirect, HttpResponse, Http404
-from django.shortcuts import get_object_or_404, render, redirect
-from django.urls import reverse
+from django.shortcuts import render
+
 from django.views import generic
 from django.utils import timezone
 
-from .models import Products
+from .models import Product
 
 LOGGER = logging.getLogger('tanushdecors')
 
@@ -23,7 +22,7 @@ class IndexView(generic.ListView):
     LOGGER.debug('IndexView |')
 
     def get_queryset(self):
-        return Products.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')[:5]
+        return Product.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')[:5]
 
 class VaishnaviView(generic.ListView):
     template_name = 'tanushdecors/vaishnavi.html'
@@ -31,5 +30,6 @@ class VaishnaviView(generic.ListView):
     def get_queryset(self):
         return None
 
-def redirect_to_vaishnavi(request):
-    return HttpResponse("Hello, i am Vaishnavi")
+def product_list(request):
+    products = Product.objects.all()
+    return render(request, 'tanushdecors/products.html', {'products': products})

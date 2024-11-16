@@ -4,9 +4,24 @@ from django.db import models
 from django.utils import timezone
 
 
-class Products(models.Model):
+class Product(models.Model):
+    CATEGORY_CHOICES = [
+        ('sofa', 'Sofa'),
+        ('chair', 'Chair'),
+        ('table', 'Table'),
+    ]
+    
     name = models.CharField(max_length=200)
+    price = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     pub_date = models.DateTimeField('date published')
+    image = models.ImageField(upload_to='products/', default='products/default.jpg')  # Default image
+
+    category = models.CharField(
+        max_length=10, 
+        choices=CATEGORY_CHOICES, 
+        null=True,  # Allows NULL in the database
+        blank=True  # Allows the field to be optional in forms
+    )
 
     def was_published_recently(self):
         now = timezone.now()
@@ -18,4 +33,5 @@ class Products(models.Model):
     
     def __str__(self):
         return self.name
+    
 

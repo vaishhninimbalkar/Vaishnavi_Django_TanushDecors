@@ -1,0 +1,29 @@
+{% extends 'tanushdecors/base.html' %}
+
+{% load static %}
+
+{% block title %}Tanush Decors{% endblock title %}
+
+{% block content %}
+<div class="container">
+  <!-- start Product Section -->
+  <div class="product-section">
+    <div class="container">
+      <div class="row">
+        {% for product in products %}
+        <div class="col-6 col-md-4 col-lg-3 mb-5">
+          <div class="product-item">
+            <img src="/static/images{{ product.image.url }}" class="img-fluid product-thumbnail" alt="{{ product.name }}" />
+            <h3 class="product-title">{{ product.name }}</h3>
+            <strong class="product-price">${{ product.price }}</strong>
+            <button class="btn btn-primary add-to-cart-btn" data-name="{{ product.name }}" data-price="{{ product.price }}" data-image="{{ product.image.url }}">
+              Add to Cart
+            </button>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
