@@ -14,7 +14,7 @@ class Product(models.Model):
     name = models.CharField(max_length=200)
     price = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     pub_date = models.DateTimeField('date published')
-    image = models.ImageField(upload_to='images/', default='products/default.jpg')  # Default image
+    image = models.ImageField(upload_to='products/', default='default.jpg')  # Default image
 
     category = models.CharField(
         max_length=10, 

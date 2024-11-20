@@ -9,6 +9,9 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 's%xnsz7!e+-h&(5ubnt_qru-px#$stqfb=x2h2n=mv4)byyvt3'
 
+
+print(f"BASE_DIR = {BASE_DIR}")
+
 DEBUG = True   # We need this for using custom error pages
 ALLOWED_HOSTS = ['*']
 
@@ -33,7 +36,7 @@ LOGGING = {
 STATIC_URL = 'static/'
 
 MEDIA_URL = "/media/"
-MEDIA_ROOT = BASE_DIR + "media"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 # Application definition
 INSTALLED_APPS = [
