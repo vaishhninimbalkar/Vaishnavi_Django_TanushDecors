@@ -13,7 +13,8 @@
         {% for product in products %}
         <div class="col-6 col-md-4 col-lg-3 mb-5">
           <div class="product-item">
-            <img src="/static/images{{ product.image.url }}" class="img-fluid product-thumbnail" alt="{{ product.name }}" />
+            PATH is {{ product.image.url }}
+            <img src="{{ product.image.url }}" class="img-fluid product-thumbnail" alt="{{ product.name }}" />
             <h3 class="product-title">{{ product.name }}</h3>
             <strong class="product-price">${{ product.price }}</strong>
             <button class="btn btn-primary add-to-cart-btn" data-name="{{ product.name }}" data-price="{{ product.price }}" data-image="{{ product.image.url }}">
