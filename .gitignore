@@ -8,6 +8,10 @@ __pycache__
 db.sqlite3
 media
 
+.local
+
+Library
+
 # Backup files # 
 *.bak 
 

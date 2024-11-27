@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 
-import logging
-
 from django.http import HttpResponseRedirect  # HttpResponse, Http404
 from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse
@@ -10,17 +8,12 @@ from django.utils import timezone
 
 from .models import Choice, Question
 
-LOGGER = logging.getLogger('polls')
-
-
 class IndexView(generic.ListView):
     """
     IndexView:
     """
     template_name = 'polls/index.html'
     context_object_name = 'latest_question_list'
-
-    LOGGER.debug('IndexView |')
 
     def get_queryset(self):
         """
@@ -34,7 +27,6 @@ class DetailView(generic.DetailView):
     """DetailView"""
 
     data = {}
-    LOGGER.debug('DetailView | data=' + str(data))
 
     model = Question
     template_name = 'polls/detail.html'
@@ -46,7 +38,6 @@ class ResultsView(generic.DetailView):
     """
     
     data = {}
-    LOGGER.debug('ResultsView | data=' + str(data))
 
     model = Question
     template_name = 'polls/results.html'
@@ -54,8 +45,6 @@ class ResultsView(generic.DetailView):
 class ResultsOverviewView(generic.ListView):
     template_name = 'polls/results-overview.html'
     context_object_name = 'latest_question_list'
-
-    LOGGER.debug('ResultsOverviewView |')
 
     def get_queryset(self):
         return Question.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')
@@ -68,8 +57,6 @@ class HelpView(generic.ListView):
     template_name = 'polls/help.html'
     context_object_name = 'latest_question_list'
 
-    LOGGER.debug('IndexView |')
-
     def get_queryset(self):
         """
         Return the last five published questions (not including those set to be
@@ -80,8 +67,6 @@ class HelpView(generic.ListView):
 def index(request):
     """
     """
-    LOGGER.debug('index | ')
-
     latest_question_list = Question.objects.order_by('-pub_date')[:5]
     context = {'latest_question_list': latest_question_list}
 
@@ -97,7 +82,6 @@ def detail(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     data = {'question': question}
 
-    LOGGER.debug('detail | data=' + str(data))
     return render(request, 'polls/detail.html', data)
 
 
@@ -106,9 +90,8 @@ def results(request):
     results:
     """
 
-    data = { mode: 'full'}
+    data = { 'mode': 'full'}
 
-    LOGGER.debug('results | data=' + str(data))
     return render(request, 'polls/results.html', data)
 
 
@@ -119,12 +102,9 @@ def vote(request, question_id):
 
     question = get_object_or_404(Question, pk=question_id)
 
-    LOGGER.debug('vote | question = ' + str(question))
-
     try:
         selected_choice = question.choice_set.get(pk=request.POST['choice'])
-        LOGGER.debug('vote | selected_choice = ' + str(selected_choice))
-
+    
     except (KeyError, Choice.DoesNotExist):
         return render(request, 'polls/detail.html', {
             'question': question,
@@ -134,7 +114,6 @@ def vote(request, question_id):
         selected_choice.votes += 1
         selected_choice.save()
         
-        LOGGER.debug('vote | goto results votes=' + str(selected_choice.votes) +', question.id=' + str(question.id))
         return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
 
 
@@ -142,8 +121,7 @@ def vote(request, question_id):
 def help(request):
     """
     """
-    LOGGER.debug('help | ')
-
+    
     latest_question_list = Question.objects.order_by('-pub_date')[:5]
     context = {'latest_question_list': latest_question_list}
 
