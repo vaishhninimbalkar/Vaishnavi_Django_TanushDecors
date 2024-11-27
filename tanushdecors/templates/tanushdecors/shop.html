@@ -1,297 +1,31 @@
-<!doctype html>
-<html lang="en">
+{% extends 'tanushdecors/base.html' %}
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="author" content="Untree.co">
-  <link rel="shortcut icon" href="favicon.png">
-  <meta name="description" content="" />
-  <meta name="keywords" content="bootstrap, bootstrap4" />
+{% load static %}
 
-  <!-- Bootstrap CSS -->
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-  <link href="css/tiny-slider.css" rel="stylesheet">
-  <link href="css/style.css" rel="stylesheet">
-  <title>TANUSH DECORS</title>
-  
-</head>
+{% block title %}Tanush Decors: Shop{% endblock title %}
 
-<body>
+{% block content %}
 
-  <!-- Start Header/Navigation -->
-  <nav class="custom-navbar navbar navbar-expand-md navbar-dark bg-dark" aria-label="Furni navigation bar">
+<div class="container">
+  <div class="shop-section">
+    <h1>Tanush Decors Shop</h1>
     <div class="container">
-      <a class="navbar-brand" href="index.html">
-        <img class="new-lg" src="{% static 'images/logo.png' %}" alt="TANUSH DECORS">
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarsFurni">
-        <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
-          <li class="nav-item">
-            <a class="nav-link" style="color: black !important; font-weight: 900;" href="index.html">Home</a>
-          </li>
-          <li><a class="nav-link" style="color: black !important; font-weight: 900;" href="shop.html">Shop</a></li>
-          <li><a class="nav-link" style="color: black !important; font-weight: 900;" href="about.html">About us</a></li>
-          <li><a class="nav-link" style="color: black !important; font-weight: 900;" href="services.html">Services</a></li>
-          <li><a class="nav-link" style="color: black !important; font-weight: 900;" href="blog.html">Blog</a></li>
-          <li><a class="nav-link" style="color: black !important; font-weight: 900;" href="contact.html">Contact us</a></li>
-        </ul>
-        <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-          <li><a class="nav-link" style="color: black !important; font-weight: 900;" href="#"><img src="{% static 'images/user.svg' %}"></a></li>
-          <li><a class="nav-link" style="color: black !important; font-weight: 900;" href="cart.html"><img src="{% static 'images/cart.svg' %}"></a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  <!-- End Header/Navigation -->
-
- <!-- Start Hero Section -->
-<div class="hero">
-  <div class="container">
-      <div class="row justify-content-between">
-          <div class="col-lg-5 col-md-6 col-12">
-              <!-- Start Product Categories Navbar -->
-              <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                  <div class="container-fluid">
-                      <a class="navbar-brand" href="#">Product Categories</a>
-                      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                          <span class="navbar-toggler-icon"></span>
-                      </button>
-                      <div class="collapse navbar-collapse" id="navbarNav">
-                          <ul class="navbar-nav">
-                              <li class="nav-item"><a class="nav-link" href="#chairs">Chairs</a></li>
-                              <li class="nav-item"><a class="nav-link" href="#sofas">Sofas</a></li>
-                              <li class="nav-item"><a class="nav-link" href="#center-tables">Tables</a></li>
-                              <li class="nav-item"><a class="nav-link" href="#dining-tables">Dining</a></li>
-                              <li class="nav-item"><a class="nav-link" href="#bedsheets">Bedsheets</a></li>
-                              <li class="nav-item"><a class="nav-link" href="#curtains">Curtains</a></li>
-                              <li class="nav-item"><a class="nav-link" href="#wallpapers">Wallpapers</a></li>
-                              <li class="nav-item"><a class="nav-link" href="#wallclocks">WallClocks</a></li>
-                              <li class="nav-item"><a class="nav-link" href="#nameplates">Nameplates</a></li>
-                              <li class="nav-item"><a class="nav-link" href="#vases">Vases</a></li>
-                              <li class="nav-item"><a class="nav-link" href="#artificial-plants">ArtificialPlants/Flowers</a></li>
-                          </ul>
-                      </div>
-                  </div>
-              </nav>
-              <!-- End Product Categories Navbar -->
-          </div>
-          <div class="col-lg-7 col-md-6 col-12"></div>
-      </div>
-  </div>
-</div>
-<!-- End Hero Section -->
-
-<!-- Product Categories Section -->
-<div class="container my-5">
-  {% for category in categories %}
-  <h1 id="{{ category.name|slugify }}">{{ category.name }}</h1>
-  <div class="row">
-    {% for product in category.products.all %}
-    <div class="col-6 col-md-4 col-lg-3 mb-5">
-      <div class="product-item">
-        <img src="{{ product.image.url }}" class="img-fluid product-thumbnail" alt="{{ product.name }}">
-        <h3 class="product-title">{{ product.name }}</h3>
-        <strong class="product-price">${{ product.price }}</strong>
-        <p>{{ product.description }}</p>
-        <button class="btn shop-now-btn">{{ product.name }}</button>
-      </div>
-    </div>
-    {% endfor %}
-  </div>
-  {% endfor %}
-</div>
-
-  <!-- Modal for Product Details -->
-  <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="productModalLabel">Product Details</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body product-modal-content">
-          <div class="row">
-            <div class="col-md-6">
-              <img id="productImage" src="" class="img-fluid" alt="Product Image">
-            </div>
-            <div class="col-md-6">
-              <h3 id="productName"></h3>
-              <strong id="productPrice"></strong>
-              <p id="productDescription"></p>
-
-              <!-- Add to Cart Button -->
-              <button class="btn btn-primary add-to-cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
-              
-              <!-- Buy Now Button -->
-              <div class="row mt-2">
-                <div class="col-md-12">
-                  <a href="#" id="buyNowLink" class="btn btn-primary">Buy Now</a>
-                </div>
-              </div>
-            </div>
+      <div class="row">
+        {% for product in products %}
+        <div class="col-6 col-md-4 col-lg-3 mb-5">
+          <div class="product-item">
+            PATH is {{ product.image.url }}
+            <img src="{{ product.image.url }}" class="img-fluid product-thumbnail" alt="{{ product.name }}" />
+            <h3 class="product-title">{{ product.name }}</h3>
+            <strong class="product-price">${{ product.price }}</strong>
+            <button class="btn btn-primary add-to-cart-btn" data-name="{{ product.name }}" data-price="{{ product.price }}" data-image="{{ product.image.url }}">
+              Add to Cart
+            </button>
           </div>
         </div>
+        {% endfor %}
       </div>
     </div>
   </div>
-<!-- Start Footer Section -->
-<footer class="footer-section">
-  <div class="container relative">
-
-    <div class="sofa-img">
-      <img src="{% static 'images/sofa.png' %}" alt="Image" class="img-fluid">
-    </div>
-
-    <div class="row">
-      <div class="col-lg-8">
-        <div class="subscription-form">
-          <h3 class="d-flex align-items-center"><span class="me-1"><img src="{% static 'images/envelope-outline.svg' %}" alt="Image" class="img-fluid"></span><span>Subscribe to Newsletter</span></h3>
-
-          <form action="#" class="row g-3">
-            <div class="col-auto">
-              <input type="text" class="form-control" placeholder="Enter your name">
-            </div>
-            <div class="col-auto">
-              <input type="email" class="form-control" placeholder="Enter your email">
-            </div>
-            <div class="col-auto">
-              <button class="btn btn-primary">
-                <span class="fa fa-paper-plane"></span>
-              </button>
-            </div>
-          </form>
-
-        </div>
-      </div>
-    </div>
-
-    <div class="row g-5 mb-5">
-      <div class="col-lg-4">
-        <div class="mb-4 footer-logo-wrap"><a href="#" class="footer-logo">Furni<span>.</span></a></div>
-        <p class="mb-4">Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. Pellentesque habitant</p>
-
-        <ul class="list-unstyled custom-social">
-          <li><a href="#"><span class="fa fa-brands fa-facebook-f"></span></a></li>
-          <li><a href="#"><span class="fa fa-brands fa-twitter"></span></a></li>
-          <li><a href="#"><span class="fa fa-brands fa-instagram"></span></a></li>
-          <li><a href="#"><span class="fa fa-brands fa-linkedin"></span></a></li>
-        </ul>
-      </div>
-
-      <div class="col-lg-8">
-        <div class="row links-wrap">
-          <div class="col-6 col-sm-6 col-md-3">
-            <ul class="list-unstyled">
-              <li><a href="#">About us</a></li>
-              <li><a href="#">Services</a></li>
-              <li><a href="#">Blog</a></li>
-              <li><a href="#">Contact us</a></li>
-            </ul>
-          </div>
-
-          <div class="col-6 col-sm-6 col-md-3">
-            <ul class="list-unstyled">
-              <li><a href="#">Support</a></li>
-              <li><a href="#">Knowledge base</a></li>
-              <li><a href="#">Live chat</a></li>
-            </ul>
-          </div>
-
-          <div class="col-6 col-sm-6 col-md-3">
-            <ul class="list-unstyled">
-              <li><a href="#">Jobs</a></li>
-              <li><a href="#">Our team</a></li>
-              <li><a href="#">Leadership</a></li>
-              <li><a href="#">Privacy Policy</a></li>
-            </ul>
-          </div>
-
-          <div class="col-6 col-sm-6 col-md-3">
-            <ul class="list-unstyled">
-              <li><a href="#">Nordic Chair</a></li>
-              <li><a href="#">Kruzo Aero</a></li>
-              <li><a href="#">Ergonomic Chair</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="border-top copyright">
-      <div class="row pt-4">
-        <div class="col-lg-6">
-          <p class="mb-2 text-center text-lg-start">Copyright &copy;<script>document.write(new Date().getFullYear());</script>. All Rights Reserved. &mdash; Designed with love by <a href="https://untree.co">Untree.co</a> <!-- License information: https://untree.co/license/ -->
-        </p>
-        </div>
-
-        <div class="col-lg-6 text-center text-lg-end">
-          <ul class="list-unstyled d-inline-flex ms-auto">
-            <li class="me-4"><a href="#">Terms &amp; Conditions</a></li>
-            <li><a href="#">Privacy Policy</a></li>
-          </ul>
-        </div>
-
-      </div>
-    </div>
-
-  </div>
-</footer>
-<!-- End Footer Section -->	
-  <!-- Bootstrap JS -->
-<script src="js/bootstrap.bundle.min.js"></script>
-
-<!-- Custom JavaScript -->
-<script>
-  document.querySelectorAll('.shop-now-btn').forEach(button => {
-    button.addEventListener('click', () => {
-      const name = button.getAttribute('data-name');
-      const price = button.getAttribute('data-price');
-      const image = button.getAttribute('data-image');
-      const description = button.getAttribute('data-description');
-
-      // Update modal content
-      document.getElementById('productName').textContent = name;
-      document.getElementById('productPrice').textContent = `$${price}`;
-      document.getElementById('productImage').src = image;
-      document.getElementById('productDescription').textContent = description;
-
-      // Update the Buy Now link with the correct parameters
-      document.getElementById('buyNowLink').href = `checkout.html?productName=${encodeURIComponent(name)}&productPrice=${encodeURIComponent(price)}`;
-
-      // Show modal
-      var productModal = new bootstrap.Modal(document.getElementById('productModal'));
-      productModal.show();
-    });
-  });
-
-  // Store cart items in local storage
-  document.querySelectorAll('.add-to-cart-btn').forEach(button => {
-    button.addEventListener('click', () => {
-      const name = document.getElementById('productName').textContent;
-      const price = document.getElementById('productPrice').textContent.replace('$', ''); // Remove the dollar sign
-      const image = document.getElementById('productImage').src;
-      
-      // Get the cart from local storage or create an empty array
-      let cart = JSON.parse(localStorage.getItem('cart')) || [];
-      
-      // Add the product to the cart
-      cart.push({ name, price, image });
-      
-      // Save the updated cart back to local storage
-      localStorage.setItem('cart', JSON.stringify(cart));
-      
-      alert(`${name} has been added to your cart.`);
-    });
-  });
-</script><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-
-
-</body>
-
-</html>
+</div>
+{% endblock content %}

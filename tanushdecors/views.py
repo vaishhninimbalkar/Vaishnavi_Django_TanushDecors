@@ -50,3 +50,7 @@ def product_list(request):
     LOGGER.debug('Fetching all products for product_list view')
     products = Product.objects.all()
     return render(request, 'tanushdecors/products.html', {'products': products})
+
+def shop(request):
+    products = Product.objects.all()
+    return render(request, 'tanushdecors/shop.html', {'products': products})
