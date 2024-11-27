@@ -6,8 +6,12 @@ from . import views
 app_name = 'tanushdecors'
 urlpatterns = [
     path('', views.IndexView.as_view(), name='index'),
-    path('vaishnavi/', views.VaishnaviView.as_view(), name='home_vaishnavi'),
     path('products/', views.product_list, name='product_list'),
+    path('shop/', views.shop, name='shop'),
+    path('about/', views.about, name='about'),
+    path('services/', views.services, name='services'),
+    path('blog/', views.blog, name='blog'),
+    path('contact/', views.contact, name='contact'),
 ]
 
 # Add this for serving media files during development

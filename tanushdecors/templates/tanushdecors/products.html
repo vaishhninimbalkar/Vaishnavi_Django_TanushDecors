@@ -6,14 +6,12 @@
 
 {% block content %}
 <div class="container">
-  <!-- start Product Section -->
   <div class="product-section">
     <div class="container">
       <div class="row">
         {% for product in products %}
         <div class="col-6 col-md-4 col-lg-3 mb-5">
           <div class="product-item">
-            PATH is {{ product.image.url }}
             <img src="{{ product.image.url }}" class="img-fluid product-thumbnail" alt="{{ product.name }}" />
             <h3 class="product-title">{{ product.name }}</h3>
             <strong class="product-price">${{ product.price }}</strong>

@@ -93,6 +93,9 @@ a.more {
   opacity: 1;
   color: #000;
 }
+
+
+/**/
 .white {
   color: black !important;
 }
@@ -121,7 +124,7 @@ a.more {
 
 .hero {
   background: #3b5d50;
-  background: url('images/background.png') no-repeat center center/cover; height: 100vh; position: relative;
+  background: url('/static/images/background.png') no-repeat center center/cover; height: 100vh; position: relative;
 
   /* padding: calc(4rem - 30px) 0 0rem 0;  */
 }
@@ -1069,4 +1072,19 @@ h1 {
 .product-price {
   color: #174b30;
   font-weight: bold;
+}
+
+
+.custom-nav-link {
+  color: black !important;
+  font-weight: 900
+}
+.custom-nav-link:focus,
+.custom-nav-link:hover {
+  color: #0a58ca;
+}
+.custom-nav-link.disabled {
+  color: #6c757d;
+  pointer-events: none;
+  cursor: default;
 }

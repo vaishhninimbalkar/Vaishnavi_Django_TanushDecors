@@ -47,7 +47,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 print("MEDIA ROOT", MEDIA_ROOT)
 # Application definition
 INSTALLED_APPS = [
-    'polls.apps.PollsConfig',
     'tanushdecors.apps.TanushDecorsConfig',
 
     'django.contrib.admin',

@@ -38,7 +38,9 @@
         "**/.github": true,
         ".github": true,
         "**/.vscode": true,
-        ".vscode": true
+        ".vscode": true,
+        "**/__pycache__": true,
+        "__pycache__": true
     },
     "explorerExclude.backup": {}
 }
