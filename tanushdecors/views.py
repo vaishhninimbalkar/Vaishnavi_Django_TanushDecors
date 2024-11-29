@@ -44,3 +44,12 @@ def blog(request):
 
 def contact(request):
     return render(request, 'tanushdecors/contact.html')
+
+def cart(request):
+    return render(request, 'tanushdecors/cart.html')
+
+def thankyou(request):
+    return render(request, 'tanushdecors/thankyou.html')
+
+def login(request):
+    return render(request, 'tanushdecors/login.html')

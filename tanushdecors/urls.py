@@ -12,6 +12,12 @@ urlpatterns = [
     path('services/', views.services, name='services'),
     path('blog/', views.blog, name='blog'),
     path('contact/', views.contact, name='contact'),
+    path('cart/', views.cart, name='cart'),
+    path('thankyou/', views.thankyou, name='thankyou'),
+    path('login/', views.login, name='login'),
+
+
+
 ]
 
 # Add this for serving media files during development

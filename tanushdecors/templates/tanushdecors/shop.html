@@ -5,24 +5,131 @@
 {% block title %}Tanush Decors{% endblock title %}
 
 {% block content %}
-<div class="container">
-  <div class="product-section">
-    <div class="container">
-      <div class="row">
-        {% for product in products %}
-        <div class="col-6 col-md-4 col-lg-3 mb-5">
-          <div class="product-item">
-            <img src="{{ product.image.url }}" class="img-fluid product-thumbnail" alt="{{ product.name }}" />
-            <h3 class="product-title">{{ product.name }}</h3>
-            <strong class="product-price">${{ product.price }}</strong>
-            <button class="btn btn-primary add-to-cart-btn" data-name="{{ product.name }}" data-price="{{ product.price }}" data-image="{{ product.image.url }}">
-              Add to Cart
-            </button>
-          </div>
-        </div>
-        {% endfor %}
+<style>
+  /* General Styles */
+  body {
+      font-family: 'Roboto', sans-serif;
+  }
+  .container {
+      max-width: 1200px;
+  }
+
+  /* Product Section */
+  .product-item {
+      background: #ffffff; /* Default card background */
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      position: relative; /* For badge positioning */
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+      opacity: 0; /* Animation start state */
+      transform: scale(0.95);
+      animation: fadeIn 0.6s forwards ease-in-out;
+  }
+  .product-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+      background-color: #dce5e4; /* Light blue background on hover */
+  }
+  .product-thumbnail {
+      max-height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 15px;
+  }
+  .product-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #343a40;
+      margin-bottom: 10px;
+  }
+  .product-price {
+      font-size: 1.3rem;
+      color: #4a4949;
+      margin-bottom: 15px;
+      font-weight: bold;
+  }
+  .add-to-cart-btn {
+      background: #3b5d50;
+      color: #fff;
+      font-size: 0.95rem;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 20px;
+      transition: background 0.3s ease;
+  }
+  .add-to-cart-btn:hover {
+      background: #000;
+  }
+  
+  /* Product Badge */
+  .product-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background-color: #dc3545;
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: bold;
+      padding: 5px 10px;
+      border-radius: 15px;
+  }
+  .product-badge.new {
+      background-color: #28a745; /* Green for new products */
+  }
+
+  /* Section Header */
+  .section-header {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #343a40;
+      margin-bottom: 30px;
+      text-align: center;
+  }
+  .section-header::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: #dce5e4;
+      margin: 10px auto;
+  }
+
+  /* Animation */
+  @keyframes fadeIn {
+      to {
+          opacity: 1;
+          transform: scale(1);
+      }
+  }
+</style>
+
+<div class="container py-5">
+  <h1 class="section-header">Explore Our Products</h1>
+  <div class="row g-4">
+    {% for product in products %}
+    <div class="col-6 col-md-4 col-lg-3">
+      <div class="product-item" style="animation-delay: {{ forloop.counter|floatformat:"1" }}0.2s;">
+        {% if product.is_new %}
+        <span class="product-badge new">New</span>
+        {% endif %}
+        {% if product.is_on_sale %}
+        <span class="product-badge">Sale</span>
+        {% endif %}
+        <img src="{{ product.image.url }}" class="img-fluid product-thumbnail" alt="{{ product.name }}">
+        <h3 class="product-title">{{ product.name }}</h3>
+        <strong class="product-price">${{ product.price }}</strong>
+        <button class="btn add-to-cart-btn"
+                data-name="{{ product.name }}"
+                data-price="{{ product.price }}"
+                data-image="{{ product.image.url }}">
+          Add to Cart
+        </button>
       </div>
     </div>
+    {% endfor %}
   </div>
 </div>
 {% endblock content %}
+ 
