@@ -1,14 +1,9 @@
 # -*- coding: utf-8 -*-
 
-import logging
 from django.shortcuts import render
 from django.views import generic
 from django.utils import timezone
 from .models import Product
-
-# Initialize the logger for the app
-LOGGER = logging.getLogger('tanushdecors')
-
 
 class IndexView(generic.ListView):
     """
@@ -16,8 +11,6 @@ class IndexView(generic.ListView):
     """
     template_name = 'tanushdecors/index.html'
     context_object_name = 'latest_product_list'
-
-    LOGGER.debug('Initializing IndexView')
 
     def get_queryset(self):
         """
