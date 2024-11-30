@@ -1091,6 +1091,15 @@ h1 {
   cursor: default;
 }
 
+form#loginForm {
+  div {
+    input#id_username {
+      background-color: red !important;
+    }
+  }
+
+}
+
 .login-box {
   width:100%;
   display: flex;
