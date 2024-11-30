@@ -120,14 +120,8 @@
         <img src="{{ product.image.url }}" class="img-fluid product-thumbnail" alt="{{ product.name }}">
         <h3 class="product-title">{{ product.name }}</h3>
         <strong class="product-price">${{ product.price }}</strong>
-        <button class="btn add-to-cart-btn"
-                data-name="{{ product.name }}"
-                data-price="{{ product.price }}"
-                data-image="{{ product.image.url }}">
-          Add to Cart
-        </button>
 
-        <a class="buy-now-button" href="{% url 'tanushdecors:add_to_cart' product.id %}">Add to Cart</a>
+        <a class="btn add-to-cart-btn" href="{% url 'tanushdecors:add_to_cart' product.id %}">Add to Cart</a>
 
       </div>
     </div>
