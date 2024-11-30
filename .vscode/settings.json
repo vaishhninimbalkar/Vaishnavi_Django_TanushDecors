@@ -40,7 +40,8 @@
         "**/.vscode": true,
         ".vscode": true,
         "**/__pycache__": true,
-        "__pycache__": true
+        "__pycache__": true,
+        "productsX": true
     },
     "explorerExclude.backup": {}
 }

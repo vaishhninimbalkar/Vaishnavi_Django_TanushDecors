@@ -126,6 +126,9 @@
                 data-image="{{ product.image.url }}">
           Add to Cart
         </button>
+
+        <a class="buy-now-button" href="{% url 'tanushdecors:add_to_cart' product.id %}">Add to Cart</a>
+
       </div>
     </div>
     {% endfor %}

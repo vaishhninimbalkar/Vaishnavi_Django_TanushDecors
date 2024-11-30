@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Product
+from .models import CartItem, Product
 
 class ProductAdmin(admin.ModelAdmin):
     list_display = ('name', 'price', 'category', 'pub_date', 'was_published_recently')
@@ -7,3 +7,4 @@ class ProductAdmin(admin.ModelAdmin):
     search_fields = ('name',)
 
 admin.site.register(Product, ProductAdmin)
+admin.site.register(CartItem)

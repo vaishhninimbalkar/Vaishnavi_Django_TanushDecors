@@ -1,7 +1,7 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title>{% block title %}Home{% endblock title %}</title>
 
@@ -68,7 +68,16 @@
           </ul>
 
           <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-            <li><a class="nav-link" style="color: black !important; font-weight: 900" href="/login">        <img src="{% static 'images/user.svg' %}" /></a></li>
+
+            {% if user.is_authenticated %}
+            Hi {{ user.username }}!
+            <li><a class="nav-link" style="color: black !important; font-weight: 900" href="/login"><img src="{% static 'images/user.svg' %}" /></a></li>
+            {% else %}
+            <p>You are not logged in</p>
+            <a href="{% url 'login' %}">Log In</a>
+            <li><a class="nav-link" style="color: black !important; font-weight: 900" href="/login"><img src="{% static 'images/user.svg' %}" /></a></li>
+            {% endif %}
+            
             <li><a class="nav-link" style="color: black !important; font-weight: 900" href="/cart"><img src="{% static 'images/cart.svg' %}"/></a> </li>
           </ul>
         </div>
@@ -99,17 +108,14 @@
     {% block    footer_javascript_section %}
     {% endblock footer_javascript_section %}
 
-    
     {% block    footer_javascript_page %}
-    
-
-    <!-- Start Footer Section -->
-    <footer class="footer-section">
+      <footer class="footer-section">
       <div class="container relative">
         <div class="sofa-img">
           <!-- <img src="{% static 'images/sofa.png' %}" alt="Image" class="img-fluid" /> -->
         </div>
 
+        <!--
         <div class="row">
           <div class="col-lg-8">
             <div class="subscription-form">
@@ -213,7 +219,9 @@
             </div>
           </div>
         </div>
+        -->
 
+        <!---
         <div class="border-top copyright">
           <div class="row pt-4">
             <div class="col-lg-6">
@@ -230,9 +238,9 @@
             </div>
           </div>
         </div>
+        -->
       </div>
-    </footer>
-    <!-- End Footer Section -->
+      </footer>
     {% endblock footer_javascript_page %}
 
   {% endblock footer_javascript %}

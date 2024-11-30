@@ -1,4 +1,5 @@
-{% extends 'polls/base.html' %}
+{% extends 'tanushdecors/base.html' %}
+
 {% block title %}Error: Page not found{% endblock title %}
 {% block nav-style %}mkt-nav{% endblock nav-style %}
 
@@ -26,7 +27,7 @@
 
                 <ul class="list-unstyled mt-3 mb-4"></ul>
                 <button type="button" class="btn btn-lg btn-block btn-outline-primary">
-                    <a href="{% url 'polls:detail' question.id %}">Vote again</a>
+                    <a href="{% url 'tanushdecors:detail' question.id %}">Vote again</a>
                 </button>
             </div>
         </div>

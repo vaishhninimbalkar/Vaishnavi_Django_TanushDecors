@@ -21,10 +21,10 @@ Read here: https://docs.djangoproject.com/en/2.2/topics/install/
 
    $ python manage.py runserver
 
-### Create Polls App
+### Create Tanush Decors App
 
     cd main
-    python manage.py startapp polls
+    python manage.py startapp tanushdecors
 
 ### Migrate database
 
@@ -33,8 +33,3 @@ Read here: https://docs.djangoproject.com/en/2.2/topics/install/
 ### Deploy
 
     python setup.py sdist
-
-### Install from Deploy Package
-
-    pip install --user django-polls/dist/django-polls-0.1.tar.gz
-

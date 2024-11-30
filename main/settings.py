@@ -44,6 +44,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Application definition
 INSTALLED_APPS = [
     'tanushdecors.apps.TanushDecorsConfig',
+    'accounts',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -70,6 +71,8 @@ MIDDLEWARE = [
 
 # URL Configuration
 ROOT_URLCONF = 'main.urls'
+
+print(f"BASE_DIR={BASE_DIR}")
 
 # Templates
 TEMPLATES = [
@@ -126,3 +129,7 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
+
+
+LOGIN_REDIRECT_URL = "/accounts/home"
+LOGOUT_REDIRECT_URL = "/accounts/home"

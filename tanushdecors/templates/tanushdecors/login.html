@@ -5,180 +5,100 @@
 {% block title %}Tanush Decors{% endblock title %}
 
 {% block content %}
-<style>
-    /* Set the background image */
-    body {
-        background-image:url('/static/images/background.png'); /* Path to your background image */
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: 0;
-        padding: 0;
-        position: relative;
-    }
 
-    /* Overlay to darken the background for better readability */
-    .overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
-        z-index: 1;
-    }
+<div class="login-box">
+  <div class="overlay"></div>
 
-    /* Form container styling */
-    .form-container {
-        position: relative;
-        z-index: 2;
-        max-width: 500px;
-        width: 100%;
-        padding: 30px;
-        background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
-        border-radius: 10px;
-        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
-    }
-
-    h3 {
-        font-weight: 700;
-        font-size: 1.5rem;
-        margin-bottom: 1.5rem;
-        text-align: center;
-    }
-
-    .nav-pills .nav-link {
-        border-radius: 30px;
-    }
-
-    .nav-pills .nav-link.active {
-        background-color: #007bff;
-        color: white;
-    }
-
-    .btn-primary, .btn-success {
-        margin-top: 10px;
-        padding: 10px;
-        font-size: 16px;
-        transition: background-color 0.3s ease-in-out;
-    }
-
-    .btn-primary:hover, .btn-success:hover {
-        background-color: #0056b3;
-    }
-
-    .btn-admin {
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        z-index: 3;
-    }
-
-    @media (max-width: 768px) {
-        .form-container {
-            padding: 20px;
-            margin: 0 15px;
-        }
-
-        h3 {
-            font-size: 1.3rem;
-        }
-    }
-
-    @media (max-width: 576px) {
-        .form-container {
-            padding: 15px;
-            margin: 20px 0;
-        }
-    }
-</style>
-</head>
-<body>
-
-<!-- Overlay to darken the background -->
-<div class="overlay"></div>
-
-<!-- Admin Button -->
-<button class="btn btn-danger btn-admin" data-bs-toggle="modal" data-bs-target="#adminModal">Admin</button>
-
-<!-- Admin Modal -->
-<div class="modal fade" id="adminModal" tabindex="-1" aria-labelledby="adminModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="adminModalLabel">Admin Login</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form id="adminForm" onsubmit="adminLogin(event)">
-                    <div class="mb-3">
-                        <label for="adminEmail" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="adminEmail" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="adminPassword" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="adminPassword" required>
-                    </div>
-                    <button type="submit" class="btn btn-danger w-100">Login as Admin</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Form container -->
-<div class="form-container">
+  <div class="form-container">
     <ul class="nav nav-pills nav-justified mb-4" id="myTab" role="tablist">
-        <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="login-tab" data-bs-toggle="tab" data-bs-target="#login" type="button" role="tab" aria-controls="login" aria-selected="true">Login</button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link" id="register-tab" data-bs-toggle="tab" data-bs-target="#register" type="button" role="tab" aria-controls="register" aria-selected="false">Register</button>
-        </li>
+      <li class="nav-item" role="presentation">
+        <button
+          class="nav-link active"
+          id="login-tab"
+          data-bs-toggle="tab"
+          data-bs-target="#login"
+          type="button"
+          role="tab"
+          aria-controls="login"
+          aria-selected="true"
+        >
+          Login
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button
+          class="nav-link"
+          id="register-tab"
+          data-bs-toggle="tab"
+          data-bs-target="#register"
+          type="button"
+          role="tab"
+          aria-controls="register"
+          aria-selected="false"
+        >
+          Register
+        </button>
+      </li>
     </ul>
 
     <div class="tab-content" id="myTabContent">
-        <!-- Login Form -->
-        <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
-            <h3>Login</h3>
-            <form id="loginForm" onsubmit="login(event)">
-                <div class="mb-3">
-                    <label for="loginEmail" class="form-label">Email address</label>
-                    <input type="email" class="form-control" id="loginEmail" required>
-                </div>
-                <div class="mb-3">
-                    <label for="loginPassword" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="loginPassword" required>
-                </div>
-                <button type="submit" class="btn btn-primary w-100">Login</button>
-            </form>
-        </div>
+      <!-- Login Form -->
+      <div
+        class="tab-pane fade show active"
+        id="login"
+        role="tabpanel"
+        aria-labelledby="login-tab"
+      >
+        <h3>Login</h3>
+        <form id="loginForm" onsubmit="login(event)">
+          <div class="mb-3">
+            <label for="loginEmail" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="loginEmail" required />
+          </div>
+          <div class="mb-3">
+            <label for="loginPassword" class="form-label">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              id="loginPassword"
+              required
+            />
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Login</button>
+        </form>
+      </div>
 
-        <!-- Registration Form -->
-        <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
-            <h3>Register</h3>
-            <form id="registerForm" onsubmit="register(event)">
-                <div class="mb-3">
-                    <label for="regName" class="form-label">Full Name</label>
-                    <input type="text" class="form-control" id="regName" required>
-                </div>
-                <div class="mb-3">
-                    <label for="regEmail" class="form-label">Email address</label>
-                    <input type="email" class="form-control" id="regEmail" required>
-                </div>
-                <div class="mb-3">
-                    <label for="regPassword" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="regPassword" required>
-                </div>
-                <button type="submit" class="btn btn-success w-100">Register</button>
-            </form>
-        </div>
+      <!-- Registration Form -->
+      <div
+        class="tab-pane fade"
+        id="register"
+        role="tabpanel"
+        aria-labelledby="register-tab"
+      >
+        <h3>Register</h3>
+        <form id="registerForm" onsubmit="register(event)">
+          <div class="mb-3">
+            <label for="regName" class="form-label">Full Name</label>
+            <input type="text" class="form-control" id="regName" required />
+          </div>
+          <div class="mb-3">
+            <label for="regEmail" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="regEmail" required />
+          </div>
+          <div class="mb-3">
+            <label for="regPassword" class="form-label">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              id="regPassword"
+              required
+            />
+          </div>
+          <button type="submit" class="btn btn-success w-100">Register</button>
+        </form>
+      </div>
     </div>
+  </div>
 </div>
-
 
 {% endblock content %}
