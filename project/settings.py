@@ -1,5 +1,5 @@
 """
-Django settings for the main project.
+Django settings for the project project.
 """
 
 import os
@@ -70,7 +70,7 @@ MIDDLEWARE = [
 ]
 
 # URL Configuration
-ROOT_URLCONF = 'main.urls'
+ROOT_URLCONF = 'project.urls'
 
 print(f"BASE_DIR={BASE_DIR}")
 
@@ -92,7 +92,7 @@ TEMPLATES = [
 ]
 
 # WSGI Application
-WSGI_APPLICATION = 'main.wsgi.application'
+WSGI_APPLICATION = 'project.wsgi.application'
 
 # CORS Settings
 if DEBUG:

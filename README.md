@@ -15,7 +15,7 @@ Read here: https://docs.djangoproject.com/en/2.2/topics/install/
 
 ### Create a project
 
-    $ django-admin startproject main
+    $ django-admin startproject project
 
 ### Run Development Server
 
@@ -23,7 +23,7 @@ Read here: https://docs.djangoproject.com/en/2.2/topics/install/
 
 ### Create Tanush Decors App
 
-    cd main
+    cd project
     python manage.py startapp tanushdecors
 
 ### Migrate database
