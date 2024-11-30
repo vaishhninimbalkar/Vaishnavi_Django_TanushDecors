@@ -88,3 +88,4 @@ uv.lock
 .gitconfig
 .github
 
+.npm/

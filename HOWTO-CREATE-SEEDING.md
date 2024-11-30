@@ -44,7 +44,6 @@ If you need more control (e.g., filtering or selective export), create a custom 
 
     if __name__ == "__main__":
         export_data()
-
     ```
 
 3. Create a Seeding Script
