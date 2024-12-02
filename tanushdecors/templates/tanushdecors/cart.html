@@ -36,6 +36,49 @@
             padding: 5px 10px;
             border-radius: 5px;
         }
+        /* Style for the total price button */
+    .total-price-btn {
+        background-color: #eee0d0; /* Green background */
+        color: rgb(6, 6, 6); /* White text */
+        border: none;
+        border-radius: 8px; /* Rounded corners */
+        padding: 15px 25px; /* Padding for a spacious button */
+        text-align: center;
+        width: 100%; /* Make button full width */
+        cursor: pointer;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+        transition: all 0.3s ease; /* Smooth transition for hover effect */
+    }
+
+    /* Change color on hover */
+    .total-price-btn:hover {
+        background-color: #c2a88b; /* Darker green when hovering */
+        transform: translateY(-2px); /* Slight lift effect */
+    }
+
+    /* Style for the total price text */
+    .total-price {
+        font-size: 1.5em; /* Larger text */
+        margin: 0; /* Remove default margin */
+    }
+
+    /* Style for the continue shopping link */
+    .continue-shopping-btn {
+        display: inline-block; /* Make it behave like a block */
+        margin-top: 20px; /* Space between button and link */
+        padding: 10px 20px; /* Padding for the link */
+        background-color: #007bff; /* Blue background */
+        color: white; /* White text */
+        text-decoration: none; /* Remove underline */
+        border-radius: 5px; /* Rounded corners */
+        transition: all 0.3s ease; /* Smooth transition for hover effect */
+    }
+
+    /* Change color on hover */
+    .continue-shopping-btn:hover {
+        background-color: #0056b3; /* Darker blue when hovering */
+        transform: translateY(-2px); /* Slight lift effect */
+    }
     </style>
 
     <h1>Your Shopping Cart</h1>
@@ -46,6 +89,7 @@
 
     {% for item in cart_items %}
     <div class="product-item">
+        <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" style="max-width: 100px; max-height: 100px;">
         <p>{{ item.product.name }} ({{ item.quantity }})</p>
         <p>Price: ${{ item.product.price }}</p>
         <a href="{% url 'tanushdecors:remove_from_cart' item.id %}">Remove</a>
@@ -55,9 +99,13 @@
     {% endfor %}
 
     </div>
+    <button class="total-price-btn">
+        <p class="total-price">Total Price: ${{ total_price }}</p>
+    </button>
+    
+        
+            <!-- <a href="{% url 'tanushdecors:shop' %}" class="buy-now-button "> Buy Now</a> -->
 
-    <p>Total Price: ${{ total_price }}</p>
 
-    <a href="{% url 'tanushdecors:shop' %}">Continue Shopping</a>
-
+    <a href="{% url 'tanushdecors:shop' %}" class="continue-shopping-btn">Continue Shopping</a>
 {% endblock content %}

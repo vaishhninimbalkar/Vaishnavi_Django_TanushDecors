@@ -997,10 +997,10 @@ textarea {
   animation: fadeIn 1s forwards;
 }
 .new-lg {
-  height: 45px;
-  width: 107px;
+  height: 55px;
+  /* width: 107px; */
   border-radius: 50%;
-  border: 3px solid #f9bf29;
+  /* border: 3px solid #f9bf29; */
 }
 
 @keyframes fadeIn {
