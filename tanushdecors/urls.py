@@ -18,6 +18,8 @@ urlpatterns = [
          
     path('thankyou/', views.thankyou, name='thankyou'),
     path('login/', views.login, name='login'),
+    path('checkout/', views.checkout, name='checkout'),
+
 ]
 
 # Add this for serving media files during development

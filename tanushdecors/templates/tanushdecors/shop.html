@@ -119,10 +119,15 @@
         {% endif %}
         <img src="{{ product.image.url }}" class="img-fluid product-thumbnail" alt="{{ product.name }}">
         <h3 class="product-title">{{ product.name }}</h3>
-        <strong class="product-price">${{ product.price }}</strong>
+        <strong class="product-price">₹{{ product.price }}</strong>
 
-        <a class="btn add-to-cart-btn" href="{% url 'tanushdecors:add_to_cart' product.id %}">Add to Cart</a>
+        <a class="btn add-to-cart-btn" href="{% url 'tanushdecors:add_to_cart' product.id %}">Buy now</a>  
 
+
+        <a class="btn add-to-cart-btn" href="{% url 'tanushdecors:add_to_cart' product.id %}">
+            <img src="{% static 'images/cart.svg' %}" alt="Add to Cart" >
+        </a>
+        
       </div>
     </div>
     {% endfor %}

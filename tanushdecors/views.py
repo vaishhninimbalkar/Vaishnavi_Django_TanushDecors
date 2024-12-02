@@ -46,6 +46,9 @@ def thankyou(request):
 def login(request):
     return render(request, 'tanushdecors/login.html')
 
+def checkout(request):
+    return render(request, 'tanushdecors/checkout.html')
+
 
 def view_cart(request):
     cart_items = CartItem.objects.filter(user=request.user)
