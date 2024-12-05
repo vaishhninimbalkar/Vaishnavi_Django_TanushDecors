@@ -3,10 +3,97 @@
 {% block title %}Sign Up{% endblock %}
 
 {% block content %}
-<h2>Sign up</h2>
-<form method="post">
-  {% csrf_token %}
-  {{ form }}
-  <button type="submit">Sign Up</button>
-</form>
+<div class="signup-container">
+  <h2>Sign Up</h2>
+  <form method="post" class="signup-form">
+    {% csrf_token %}
+    <div class="form-elements">
+      {{ form.as_p }}
+    </div>
+    <button type="submit" class="signup-button">Sign Up</button>
+  </form>
+</div>
+
+<style>
+  /* Container Styles */
+  .signup-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+
+  /* Heading Styles */
+  .signup-container h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+
+  /* Form Elements */
+  .signup-form .form-elements p {
+    margin-bottom: 15px;
+  }
+
+  .signup-form input[type="text"],
+  .signup-form input[type="password"],
+  .signup-form input[type="email"],
+  .signup-form select {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #555;
+    transition: border-color 0.3s;
+  }
+
+  .signup-form input[type="text"]:focus,
+  .signup-form input[type="password"]:focus,
+  .signup-form input[type="email"]:focus,
+  .signup-form select:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+
+  /* Button Styles */
+  .signup-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+
+  .signup-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+  }
+
+  /* Responsive Design */
+  @media (max-width: 480px) {
+    .signup-container {
+      padding: 15px;
+    }
+
+    .signup-container h2 {
+      font-size: 20px;
+    }
+
+    .signup-button {
+      font-size: 14px;
+    }
+  }
+</style>
 {% endblock %}

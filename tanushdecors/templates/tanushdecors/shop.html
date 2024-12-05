@@ -2,7 +2,12 @@
 
 {% load static %}
 
-{% block title %}Tanush Decors{% endblock title %}
+{% block title %}Tanush Decors{%endblock title %}
+
+{% block    head_css_section %}
+<link href="{% static 'css/cards.css' %}" rel="stylesheet" media="screen"/>
+{% endblock head_css_section %}
+
 
 {% block content %}
 <style>
@@ -103,35 +108,247 @@
           transform: scale(1);
       }
   }
+  /* Styling for the "Read More" link */
+  .read-more {
+      color: #007bff;
+      cursor: pointer;
+      text-decoration: underline;
+      font-size: 0.9rem;
+  }
+  .read-more:hover {
+      color: #0056b3;
+  }
+  .product-title {
+      position: relative;
+      overflow: hidden;
+      max-height: 2.2rem; /* Height for two lines of text */
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      transition: max-height 0.3s ease;
+  }
+  .product-title.expanded {
+      max-height: none; /* Remove height restriction */
+      white-space: normal;
+  }
+  
+  /* Modal styles for product image preview */
+  .modal {
+      display: none; /* Initially hidden */
+      position: fixed;
+      z-index: 1050;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background-color: rgba(0, 0, 0, 0.8); /* Dark semi-transparent background */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+  .modal-content {
+      width: 90vw; /* Default size for smaller screens */
+      max-width: 500px; /* Square box for larger screens */
+      max-height: 500px; /* Ensures square proportions */
+      height: 90vw; /* Same as width for square proportions */
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+      animation: zoomIn 0.3s ease-in-out;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  }
+  .modal-content img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain; /* Ensures the image fits perfectly */
+  }
+  .modal-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      color: #333;
+      font-size: 24px;
+      font-weight: bold;
+      cursor: pointer;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease;
+  }
+  .modal-close:hover {
+      transform: scale(1.2);
+      color: #000;
+  }
+
+  @keyframes zoomIn {
+      from {
+          transform: scale(0.8);
+          opacity: 0;
+      }
+      to {
+          transform: scale(1);
+          opacity: 1;
+      }
+  }
+
+  /* Responsive Design */
+  @media (min-width: 1024px) {
+      .modal-content {
+          width: 500px;
+          height: 500px;
+      }
+  }
+  
 </style>
-
-<div class="container py-5">
-  <h1 class="section-header">Explore Our Products</h1>
-  <div class="row g-4">
-    {% for product in products %}
-    <div class="col-6 col-md-4 col-lg-3">
-      <div class="product-item" style="animation-delay: {{ forloop.counter|floatformat:"1" }}0.2s;">
-        {% if product.is_new %}
-        <span class="product-badge new">New</span>
-        {% endif %}
-        {% if product.is_on_sale %}
-        <span class="product-badge">Sale</span>
-        {% endif %}
-        <img src="{{ product.image.url }}" class="img-fluid product-thumbnail" alt="{{ product.name }}">
-        <h3 class="product-title">{{ product.name }}</h3>
-        <strong class="product-price">₹{{ product.price }}</strong>
-
-        <a class="btn add-to-cart-btn" href="{% url 'tanushdecors:add_to_cart' product.id %}">Buy now</a>  
-
-
-        <a class="btn add-to-cart-btn" href="{% url 'tanushdecors:add_to_cart' product.id %}">
-            <img src="{% static 'images/cart.svg' %}" alt="Add to Cart" >
-        </a>
-        
+<div class="category-container">
+    <div class="categories">
+      <div class="category-item">
+        <img src="{% static 'images/product-2.png' %}" class="img-fluid" />
+        <p>Chairs</p>
       </div>
+      <div class="category-item">
+        <img src="{% static 'images/couch.png' %}" class="img-fluid" />
+        <p>Sofa</p>
+      </div>
+      <div class="category-item">
+        <img src="{% static 'images/post-1.jpg' %}" class="img-fluid" />
+        <p>Table</p>
+      </div>
+      <div class="category-item">
+        <img src="{% static 'images/char2-removebg-preview.png' %}" class="img-fluid" />
+        <p>Home decors</p>
+      </div>
+      <div class="category-item">
+        <img src="{% static 'images/artefacts.jpg' %}" class="img-fluid" />
+        <p>Artifacts</p>
+      </div>
+      <div class="category-item">
+        <img src="{% static 'images/nameplate.jpg' %}" class="img-fluid" />
+        <p>Nameplate</p>
+      </div>
+      <div class="category-item">
+        <img src="{% static 'images/char1-removebg-preview.png' %}" class="img-fluid" />
+        <p>Wallclock</p>
+      </div>
+      <div class="category-item">
+        <img src="{% static 'images/char2-removebg-preview.png' %}" class="img-fluid" />
+        <p>Wallpaper</p>
+      </div>
+      <div class="category-item">
+        <img src="{% static 'images/wood2-removebg-preview.png' %}" class="img-fluid" />
+        <p>Curtains</p>
+      </div>
+      
+      <div class="category-item">
+        <img src="{% static 'images/char2-removebg-preview.png' %}" class="img-fluid" />
+        <p>Bedsheet</p>
+      </div>
+      <div class="category-item">
+        <img src="{% static 'images/couch.png' %}" class="img-fluid" />
+        <p>Vase</p>
+      </div>
+      <div class="category-item">
+        <img src="{% static 'images/sofa.png' %}" class="img-fluid" />
+        <p>couch</p>
+      </div>
+      <div class="category-item">
+        <img src="{% static 'images/char1-removebg-preview.png' %}" class="img-fluid" />
+        <p>Bookshelf</p>
+      </div>
+      <div class="category-item">
+        <img src="{% static 'images/Dining-Table-Transparent-Images.png' %}" class="img-fluid" />
+        <p>Dining Tables</p>
+      </div>
+     
     </div>
-    {% endfor %}
   </div>
+<div class="container py-5">
+    <h1 class="section-header">Explore Our Products</h1>
+    <div class="row g-4">
+      {% for product in products %}
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="product-item" style="animation-delay: {{ forloop.counter|floatformat:"1" }}0.2s;">
+          {% if product.is_new %}
+          <span class="product-badge new">New</span>
+          {% endif %}
+          {% if product.is_on_sale %}
+          <span class="product-badge">Sale</span>
+          {% endif %}
+          <img src="{{ product.image.url }}" class="img-fluid product-thumbnail" alt="{{ product.name }}" onclick="openModal('{{ product.image.url }}')">
+          
+          <h3 class="product-title" id="product-title-{{ forloop.counter }}">
+            {{ product.name }}
+          </h3>
+          {% if product.name|length > 30 %}
+          <span class="read-more" onclick="toggleReadMore('product-title-{{ forloop.counter }}', this)">More</span>
+          {% endif %}
+  
+          <strong class="product-price">₹{{ product.price }}</strong>
+  
+          <a class="btn add-to-cart-btn" href="{% url 'tanushdecors:add_to_cart' product.id %}">Buy now</a>
+          <a class="btn add-to-cart-btn" href="{% url 'tanushdecors:add_to_cart' product.id %}">
+              <img src="{% static 'images/cart.svg' %}" alt="Add to Cart">
+          </a>
+          
+        </div>
+      </div>
+      {% endfor %}
+    </div>
 </div>
+
+<!-- Modal for Enlarged Image -->
+<div id="imageModal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <span class="modal-close" onclick="closeModal()">&times;</span>
+        <img id="modalImage" alt="Enlarged product image">
+    </div>
+</div>
+  
+  <script>
+    function toggleReadMore(titleId, toggleElement) {
+        const titleElement = document.getElementById(titleId);
+        if (titleElement.classList.contains('expanded')) {
+            titleElement.classList.remove('expanded');
+            toggleElement.textContent = 'More';
+        } else {
+            titleElement.classList.add('expanded');
+            toggleElement.textContent = 'Less';
+        }
+    }
+
+    // Open the modal and display the image
+  function openModal(imageUrl) {
+      const modal = document.getElementById('imageModal');
+      const modalImage = document.getElementById('modalImage');
+      modal.style.display = 'flex'; // Flex to center the modal
+      modalImage.src = imageUrl;
+      console.log(`open image ${imageUrl}`);
+  }
+
+  // Close the modal
+  function closeModal() {
+      const modal = document.getElementById('imageModal');
+      modal.style.display = 'none';
+  }
+
+  // Close modal if clicking outside of the image
+  window.onclick = function(event) {
+      const modal = document.getElementById('imageModal');
+      if (event.target === modal) {
+          modal.style.display = 'none';
+      }
+  };
+
+  // This code is called then page is loaded
+  // closeModal();
+
+  </script>
 {% endblock content %}
  

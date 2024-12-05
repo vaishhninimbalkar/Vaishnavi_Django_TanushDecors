@@ -11,6 +11,25 @@
 
 {% block content %}
 
+<style>
+  .zoom-animation {
+    display: inline-block;
+    animation: zoomInOut 1.5s infinite ease-in-out; /* Animation for continuous zooming */
+    transition: transform 0.2s;
+  }
+
+  @keyframes zoomInOut {
+    0% {
+      transform: scale(1); /* Original size */
+    }
+    50% {
+      transform: scale(1.2); /* Zoom in */
+    }
+    100% {
+      transform: scale(1); /* Back to original size */
+    }
+  }
+</style>
 <div class="container-fluid p-0">
   <div
     class="hero"
@@ -47,7 +66,10 @@
 
             <p>
 
-              <a href="{% url 'tanushdecors:shop' %}" class="btn btn-secondary me-2">Shop Now</a>
+              <a href="{% url 'tanushdecors:shop' %}" class="btn btn-secondary me-2 zoom-animation">Shop Now</a>
+
+              
+              
               <a href="#" class="btn btn-white-outline">Explore</a>
             </p>
           </div>
