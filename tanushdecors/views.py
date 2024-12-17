@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from django.shortcuts import redirect, render
-from django.views import generic
-from django.utils import timezone
+from django.shortcuts import redirect, render # type: ignore
+from django.views import generic # type: ignore
+from django.utils import timezone # type: ignore
 from .models import CartItem, Product
 
 class IndexView(generic.ListView):

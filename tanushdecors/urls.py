@@ -1,6 +1,6 @@
-from django.conf import settings
-from django.conf.urls.static import static
-from django.urls import path
+from django.conf import settings # type: ignore
+from django.conf.urls.static import static # type: ignore
+from django.urls import path # type: ignore
 from . import views
 
 app_name = 'tanushdecors'
