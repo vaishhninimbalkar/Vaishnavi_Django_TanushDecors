@@ -30,7 +30,7 @@
         .buy-now-button {
             display: block;
             margin-top: 10px;
-            background-color: #007bff;
+            background-color:#3b5d50;
             color: #fff;
             text-decoration: none;
             padding: 5px 10px;
@@ -67,7 +67,7 @@
         display: inline-block; /* Make it behave like a block */
         margin-top: 20px; /* Space between button and link */
         padding: 10px 20px; /* Padding for the link */
-        background-color: #007bff; /* Blue background */
+        background-color: #3b5d50; /* Blue background */
         color: white; /* White text */
         text-decoration: none; /* Remove underline */
         border-radius: 5px; /* Rounded corners */
@@ -76,7 +76,7 @@
 
     /* Change color on hover */
     .continue-shopping-btn:hover {
-        background-color: #0056b3; /* Darker blue when hovering */
+        background-color:rgb(47, 45, 45); /* Darker blue when hovering */
         transform: translateY(-2px); /* Slight lift effect */
     }
     </style>
@@ -92,7 +92,9 @@
         <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" style="max-width: 100px; max-height: 100px;">
         <p>{{ item.product.name }} ({{ item.quantity }})</p>
         <p>Price: ${{ item.product.price }}</p>
+        <a href="{% url 'tanushdecors:checkout' %}" class="buy-now-button "> Buy Now</a>
         <a href="{% url 'tanushdecors:remove_from_cart' item.id %}">Remove</a>
+
     </div>
     {% empty %}
     <p>Your cart is empty.</p>

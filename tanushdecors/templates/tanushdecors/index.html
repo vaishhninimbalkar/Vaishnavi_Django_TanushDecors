@@ -29,7 +29,52 @@
       transform: scale(1); /* Back to original size */
     }
   }
+  /* WhatsApp Icon Styles */
+  .whatsapp-icon {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      background-color: #25d366;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      z-index: 1000;
+      transition: transform 0.3s ease;
+    }
+
+    .whatsapp-icon img {
+      width: 35px;
+      height: 35px;
+    }
+
+    .whatsapp-icon:hover {
+      transform: scale(1.1);
+    }
+
+    /* Responsive Adjustment */
+    @media (max-width: 576px) {
+      .whatsapp-icon {
+        width: 50px;
+        height: 50px;
+      }
+
+      .whatsapp-icon img {
+        width: 30px;
+        height: 30px;
+      }
+    }
 </style>
+
+<!-- WhatsApp Icon -->
+<a href="https://wa.me/1234567890" class="whatsapp-icon" target="_blank">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Icon">
+</a>
+
 <div class="container-fluid p-0">
   <div
     class="hero"
@@ -230,11 +275,12 @@
 
 <div class="recommendations-container">
   <h2>See personalized recommendations</h2>
-  <button class="sign-in-btn">Sign in</button>
+  <button class="sign-in-btn" onclick="location.href='{% url 'signup' %}'">Sign in</button>
   <p class="new-customer">
-    New customer? <a href="#">Start here.</a>
+    New customer? <a href="{% url 'signup' %}">Start here.</a>
   </p>
 </div>
+
 
 
 <!-- Start Why Choose Us Section -->
