@@ -41,7 +41,12 @@
         ".vscode": true,
         "**/__pycache__": true,
         "__pycache__": true,
-        "productsX": true
+        "productsX": true,
+        "**/.npm": true,
+        "**/.lesshst": true,
+        "**/.set_env.sh": true,
+        "**/.bash_history": true,
+        "**/.gitconfig": true
     },
     "explorerExclude.backup": {}
 }

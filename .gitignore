@@ -9,6 +9,7 @@ db.sqlite3
 media
 
 .local
+.bash_history
 
 Library
 
@@ -89,3 +90,8 @@ uv.lock
 .github
 
 .npm/
+
+.set_env.sh
+.lesshst
+.bash_history
+.set_env.sh

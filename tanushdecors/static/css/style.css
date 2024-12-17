@@ -1,8 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+
+:root {
+  --main-color-fg: #f9bf29
+}
+
+
 body {
   overflow-x: hidden;
   position: relative;
 }
+
 
 body {
   font-family: "Inter", sans-serif;
@@ -51,6 +58,13 @@ a.more {
   box-shadow: none;
   outline: none;
 }
+
+.nav-icon {
+  width: 25px;
+  height: auto;
+  color: white;
+}
+
 @media (min-width: 992px) {
   .custom-navbar .custom-navbar-nav li {
     margin-left: 15px;
@@ -1097,11 +1111,10 @@ form#loginForm {
       background-color: red !important;
     }
   }
-
 }
 
 .login-box {
-  width:100%;
+  width: 100%;
   display: flex;
   justify-content: center;
 
@@ -1123,7 +1136,7 @@ form#loginForm {
     max-width: 500px;
     width: 50%;
     padding: 30px;
-    background-color: rgba( 255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 0.9);
 
     border-radius: 10px;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
@@ -1138,6 +1151,8 @@ form#loginForm {
 
   .nav-pills .nav-link {
     border-radius: 30px;
+    color: black !important;
+    font-weight: 900;
   }
 
   .nav-pills .nav-link.active {
@@ -1183,4 +1198,3 @@ form#loginForm {
     }
   }
 }
-

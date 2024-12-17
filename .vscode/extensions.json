@@ -8,6 +8,9 @@
         "ms-vscode.live-server",
         "onatm.open-in-new-window",
         "peterschmalfeldt.explorer-exclude",
-        "dheovani.svg-viewer"
+        "dheovani.svg-viewer",
+        "codezombiech.gitignore",
+        "michelemelluso.gitignore",
+        "quentinguidee.gitignore-ultimate"
     ]
 }
